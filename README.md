@@ -4,6 +4,14 @@ Functions Framework: https://cloud.google.com/functions/docs/functions-framework
 
 ## Setup
 
+Install `gcloud` command (in macOS)
+
+```
+$ brew install --cask google-cloud-sdk
+```
+
+Create new project by `gts`
+
 see: https://github.com/GoogleCloudPlatform/functions-framework-nodejs/blob/master/docs/typescript.md
 
 1. Use [gts](https://github.com/google/gts) to configure Typescript.
@@ -46,7 +54,7 @@ see: https://github.com/GoogleCloudPlatform/functions-framework-nodejs/blob/mast
 Run in local
 
 ```
-npm run watch
+make run
 ```
 
 Then, started the process.
@@ -78,4 +86,8 @@ Then, started the process.
 
 ## Deploy
 
-TBD
+```
+make deploy
+```
+
+=> https://us-central1-cloud-functions-test-361611.cloudfunctions.net/helloWorld
