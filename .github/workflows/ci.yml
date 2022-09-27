@@ -55,3 +55,4 @@ jobs:
           runtime: nodejs16
           region: asia-northeast1
           entry_point: helloWorld
+          service_account_email: cf-runtime@cloud-functions-test-361611.iam.gserviceaccount.com
