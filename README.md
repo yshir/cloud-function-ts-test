@@ -86,8 +86,4 @@ Then, started the process.
 
 ## Deploy
 
-```
-make deploy
-```
-
-=> https://us-central1-cloud-functions-test-361611.cloudfunctions.net/helloWorld
+cf. https://github.com/yshir/cloud-function-ts-test/blob/main/.github/workflows/ci.yml
