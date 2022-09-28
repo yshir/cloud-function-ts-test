@@ -1,0 +1,31 @@
+name: Deploy (manually)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+
+      - run: npm ci
+      - run: npm run compile
+
+      - uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCP_DEPLOY_CREDENTIALS }} # FIXME: 本来は json キーではなく Workload Identity 連携を利用したほうがセキュリティ的には望ましい
+
+      - uses: google-github-actions/deploy-cloud-functions@v0
+        with:
+          name: cloud-functions-ts-test
+          runtime: nodejs16
+          region: asia-northeast1
+          entry_point: helloWorld
+          service_account_email: cf-runtime@cloud-functions-test-361611.iam.gserviceaccount.com
+          env_vars: VAL1=true,VAL2=1CDBF16E-2EA4-464D-9B32-DC78C6EFB212
